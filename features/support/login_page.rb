@@ -1,6 +1,10 @@
 require_relative 'base_page'
+require_relative 'sign_up_page'
+require_relative 'utilities'
 
-class Login < BasePage
+include 'Utilities'
+
+class LoginPage < BasePage
 
   LOGIN_FORM = {:css => "[action$='/login']"}
   USER_NAME_FIELD = {:css => "[name='uid']"}
@@ -8,12 +12,16 @@ class Login < BasePage
   LOGIN_BTN = {:css => "[value='Login']"}
   DISPLAYED_USER = {:css => '.menu-user'}
   DISPLAYED_ERROR = {:css => '.message'}
+  SIGN_IN_LINK = {:css => "[href$='/newaccount.gtl']"}
 
-  def initialize(driver)
+  def initialize(driver, session_id = "#{ENV['session_id']}")
 
-    super
+    super(driver)
 
-    url = "#{ENV['url']}/#{ENV['session_id']}/login"
+    @driver = driver
+    @session_id = session_id
+
+    url = "#{ENV['url']}/#{session_id}/login"
 
     visit url
 
@@ -53,6 +61,14 @@ class Login < BasePage
   def get_displayed_error
 
     get_text(DISPLAYED_ERROR)
+
+  end
+
+  def sign_up
+
+    click_link(SIGN_IN_LINK)
+    sign_up_page = SignUpPage.new(@driver, @session_id)
+    sign_up_page.sign_up(Utilities.random_string(10) ,ENV['account_password'])
 
   end
 
