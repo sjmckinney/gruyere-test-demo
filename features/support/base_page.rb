@@ -1,16 +1,38 @@
-require 'selenium-webdriver'
-
 class BasePage
 
-  def enter_text(css, text)
+  def initialize(driver)
 
-    @driver.find_element(css).send_keys(text)
+    @driver = driver
 
   end
 
-  def click_button css
+  def visit(url)
 
-    @driver.find_element(css).click
+    @driver.get(url)
+
+  end
+
+  def find(locator)
+
+    @driver.find_element(locator)
+
+  end
+
+  def enter_text(locator, text)
+
+    @driver.find_element(locator).send_keys(text)
+
+  end
+
+  def click_button(locator)
+
+    @driver.find_element(locator).click
+
+  end
+
+  def get_text(locator)
+
+    @driver.find_element(locator).text
 
   end
 

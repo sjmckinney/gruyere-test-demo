@@ -17,7 +17,7 @@ GEM
     cucumber-wire (0.0.1)
     diff-lcs (1.2.5)
     dotenv (2.1.1)
-    ffi (1.9.10)
+    ffi (1.9.11)
     gherkin (4.0.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
@@ -35,7 +35,7 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     rubyzip (1.2.0)
-    selenium-webdriver (2.53.0)
+    selenium-webdriver (2.53.4)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
@@ -48,7 +48,7 @@ DEPENDENCIES
   cucumber (= 2.4.0)
   dotenv (= 2.1.1)
   rspec (= 3.4.0)
-  selenium-webdriver (= 2.53.0)
+  selenium-webdriver (= 2.53.4)
 
 BUNDLED WITH
    1.12.5

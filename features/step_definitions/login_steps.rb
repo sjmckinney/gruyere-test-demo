@@ -1,11 +1,21 @@
-Given(/^the user provides the credentials "([^"]*)" and "([^"]*)"$/) do |arg1, arg2|
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^the user logs in with the credentials "([^"]*)" and "([^"]*)"$/) do |username, password|
+
+  $login = Login.new(@driver)
+  $login.login(username, password)
+
 end
 
-Then(/^the result should be "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^the username "([^"]*)" should be displayed$/) do |dsiplayed_username|
+
+  displayed_username = $login.get_displayed_username
+  expect(displayed_username).to eql(dsiplayed_username)
+
 end
 
-When(/^the user logs in$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+
+Then(/^the message "([^"]*)" should be displayed$/) do |message|
+
+  displayed_error = $login.get_displayed_error
+  expect(displayed_error).to eql(message)
+
 end
