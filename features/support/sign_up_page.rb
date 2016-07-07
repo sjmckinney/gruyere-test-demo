@@ -1,14 +1,14 @@
-class SignUpPage
+class SignUpPage < BasePage
 
-  SIGN_UP_FORM = {:css => "form[action$='/saveprofile']"}
-  USERNAME_FIELD = {:css => "[name='uid']"}
-  PASSWORD_FIELD = {:css => "[name='pw']"}
-  CREATE_ACCT_BUTTON = {:css => "[value='Create account']"}
-  SUCCESS_MESSAGE = {:css => '.message'}
+  SIGN_UP_FORM ||= {:css => "form[action$='/saveprofile']"}
+  USERNAME_FIELD ||= {:name => 'uid'}
+  PASSWORD_FIELD ||= {:name => 'pw'}
+  CREATE_ACCT_BUTTON ||= {:css => "[value='Create account']"}
+  SUCCESS_MESSAGE ||= {:css => '.message'}
 
   def initialize(driver, new_session_id)
 
-    super(driver)
+    super driver
 
     url = "#{ENV['url']}/#{new_session_id}/newaccount.gtl"
 
@@ -27,7 +27,7 @@ class SignUpPage
     enter_text(PASSWORD_FIELD, password)
     click_button(CREATE_ACCT_BUTTON)
 
-    wait_for(10) { SUCCESS_MESSAGE.is_displayed? }
+    wait_for(10) { (find SUCCESS_MESSAGE).displayed? }
     get_text(SUCCESS_MESSAGE)
 
   end

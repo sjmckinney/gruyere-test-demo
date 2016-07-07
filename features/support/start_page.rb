@@ -1,8 +1,8 @@
 class StartPage < BasePage
 
-  TERMS = {:css => "[href='http://code.google.com/terms.html']"}
-  AGREE_AND_START = {:link => 'Agree and start'}
-  NEW_SESSION_ID = {:css => 'body'}
+  TERMS ||= {:css => "[href='http://code.google.com/terms.html']"}
+  AGREE_AND_START ||= {:link_text => 'Agree & Start'}
+  NEW_SESSION_ID ||= {:tag_name => 'body'}
 
   def initialize(driver)
 

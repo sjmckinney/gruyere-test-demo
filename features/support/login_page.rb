@@ -2,17 +2,17 @@ require_relative 'base_page'
 require_relative 'sign_up_page'
 require_relative 'utilities'
 
-include 'Utilities'
+include Utilities
 
 class LoginPage < BasePage
 
-  LOGIN_FORM = {:css => "[action$='/login']"}
-  USER_NAME_FIELD = {:css => "[name='uid']"}
-  PASSWORD_FIELD = {:css => "[name='pw']"}
-  LOGIN_BTN = {:css => "[value='Login']"}
-  DISPLAYED_USER = {:css => '.menu-user'}
-  DISPLAYED_ERROR = {:css => '.message'}
-  SIGN_IN_LINK = {:css => "[href$='/newaccount.gtl']"}
+  LOGIN_FORM ||= {:css => "[action$='/login']"}
+  USER_NAME_FIELD ||= {:name => 'uid'}
+  PASSWORD_FIELD ||= {:name => 'pw'}
+  LOGIN_BTN ||= {:css => "[value='Login']"}
+  DISPLAYED_USER ||= {:css => '.menu-user'}
+  DISPLAYED_ERROR ||= {:css => '.message'}
+  SIGN_IN_LINK ||= {:css => "[href$='/newaccount.gtl']"}
 
   def initialize(driver, session_id = "#{ENV['session_id']}")
 
@@ -68,7 +68,7 @@ class LoginPage < BasePage
 
     click_link(SIGN_IN_LINK)
     sign_up_page = SignUpPage.new(@driver, @session_id)
-    sign_up_page.sign_up(Utilities.random_string(10) ,ENV['account_password'])
+    sign_up_page.create_account(Utilities.random_string(10) ,ENV['account_password'])
 
   end
 

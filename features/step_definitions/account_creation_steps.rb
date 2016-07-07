@@ -5,9 +5,9 @@ Given(/^a user without an account provides new credentials$/) do
 
 end
 
-Then(/^an account in that name will be created$/) do
+Then(/^an account will be created and the message "([^"]*)" displayed$/) do |message|
 
   success_msg = $login_page.sign_up
-  expect(success_msg).to eq("Account created")
+  expect(success_msg).to eq(message)
 
 end
