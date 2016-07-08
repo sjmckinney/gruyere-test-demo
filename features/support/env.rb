@@ -5,6 +5,8 @@ require_relative 'utilities'
 
 include Utilities
 
+World(Utilities)
+
 Dotenv.load '.env'
 
 $LOG = Logger.new('gruyere-test-demo.log')

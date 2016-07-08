@@ -15,7 +15,7 @@ class StartPage < BasePage
     visit url
 
     raise 'Start page not ready' unless
-        find( TERMS ).displayed?
+      is_displayed?(TERMS)
 
     $LOG.info("Page at #{url} opened.")
 
@@ -29,7 +29,7 @@ class StartPage < BasePage
 
     click_link(AGREE_AND_START)
 
-    LoginPage.new(@driver, new_session_id)
+    HomePage.new(@driver)
 
   end
 
