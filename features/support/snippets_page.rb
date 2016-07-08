@@ -58,6 +58,15 @@ class SnippetsPage < BasePage
     delete_snippet_locator = {:css => "[href$='deletesnippet?index=#{snippet_location}']"}
     click_link(delete_snippet_locator)
 
+  end
+
+  def delete_snippet_via_url(snippet)
+
+    if(snippet == 'My new snippet one' )
+
+      visit("#{ENV['url']}/#{ENV['session_id']}/deletesnippet?index=0")
+
+    end
 
   end
   
