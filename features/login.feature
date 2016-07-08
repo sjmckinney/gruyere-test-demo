@@ -1,9 +1,11 @@
-Feature: Ability of user to login into Gruyere site
+Feature: Access control to Gruyere site with  of user to login into Gruyere site
 
+  @login @valid
   Scenario: Login with valid credentials
     Given the user logs in with the credentials "smckinney" and "password"
     Then the username "smckinney <smckinney>" should be displayed
 
+  @login @invalid
   Scenario: Login with invalid credentials
     Given the user logs in with the credentials "smckinney" and "password1"
     Then the message "Invalid user name or password." should be displayed

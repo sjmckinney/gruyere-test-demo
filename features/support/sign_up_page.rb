@@ -6,18 +6,16 @@ class SignUpPage < BasePage
   CREATE_ACCT_BUTTON ||= {:css => "[value='Create account']"}
   SUCCESS_MESSAGE ||= {:css => '.message'}
 
-  def initialize(driver, new_session_id)
+  def initialize(driver)
 
-    super driver
+    super
 
-    url = "#{ENV['url']}/#{new_session_id}/newaccount.gtl"
-
-    visit url
+    @driver = driver
 
     raise 'Sign up page not ready' unless
-        find( SIGN_UP_FORM ).displayed?
+      is_displayed?(SIGN_UP_FORM)
 
-    $LOG.info("Page at #{url} opened.")
+    $LOG.info("Page at #{@driver.current_url} opened.")
 
   end
 
@@ -28,7 +26,9 @@ class SignUpPage < BasePage
     click_button(CREATE_ACCT_BUTTON)
 
     wait_for(10) { (find SUCCESS_MESSAGE).displayed? }
-    get_text(SUCCESS_MESSAGE)
+    success_message = get_text(SUCCESS_MESSAGE)
+    $LOG.info("Displayed message is #{success_message}")
+    success_message
 
   end
 
