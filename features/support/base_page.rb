@@ -24,15 +24,33 @@ class BasePage
 
   end
 
-  def click_button(locator)
+  def click_element(locator)
 
     @driver.find_element(locator).click
+
+  end
+
+  def click_button(locator)
+
+    click_element(locator)
+
+  end
+
+  def click_link(locator)
+
+    click_element(locator)
 
   end
 
   def get_text(locator)
 
     @driver.find_element(locator).text
+
+  end
+
+  def wait_for(seconds = 15)
+
+    Selenium::WebDriver::Wait.new(:timeout => seconds).until { yield }
 
   end
 
