@@ -37,7 +37,24 @@ end
 
 After do |scenario|
 
+  if(scenario.failed?)
+
+    $LOG.info('SCENARIO FAILED')
+    $LOG.info("Reason: #{scenario.exception.message}")
+
+  else
+
+    $LOG.info('SCENARIO PASSED')
+
+  end
+
   @driver.quit
   $LOG.info('---------------------------------------------------------')
+
+end
+
+After('@snippet','@create') do
+
+  @driver.get("#{ENV['url']}/#{ENV['session_id']}/deletesnippet?index=0")
 
 end
