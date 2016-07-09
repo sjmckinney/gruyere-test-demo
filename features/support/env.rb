@@ -18,8 +18,8 @@ Before do |scenario|
 
   begin
 
-    Utilities.validate_browser
-    Utilities.validate_and_set_log_level
+    validate_browser
+    validate_and_set_log_level
 
     @driver = Selenium::WebDriver.for (ENV['browser']).to_sym
     $LOG.info("Driver of type #{ENV['browser']} created.")
@@ -29,6 +29,7 @@ Before do |scenario|
     $LOG.info("Error has occurred in : #{__FILE__} @ line #{__LINE__}")
     $LOG.error("Error.message: #{e.message}")
     $LOG.debug("Error.backtrace: #{e.backtrace}")
+    take_screenshot(__FILE__, __LINE__)
     raise
 
   end

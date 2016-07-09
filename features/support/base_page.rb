@@ -23,6 +23,7 @@ class BasePage
       $LOG.info("Error has occurred in : #{__FILE__} @ line #{__LINE__}")
       $LOG.error("Error.message: #{e.message}")
       $LOG.debug("Error.backtrace: #{e.backtrace}")
+      take_screenshot(__FILE__, __LINE__)
       raise
 
     end
@@ -37,7 +38,7 @@ class BasePage
 
   def enter_text(locator, text)
 
-    @driver.find_element(locator).send_keys(text)
+    find(locator).send_keys(text)
 
   end
 
@@ -52,6 +53,7 @@ class BasePage
       $LOG.info("Error has occurred in : #{__FILE__} @ line #{__LINE__}")
       $LOG.error("Error.message: #{e.message}")
       $LOG.debug("Error.backtrace: #{e.backtrace}")
+      take_screenshot(__FILE__, __LINE__)
       raise
 
     end
@@ -85,6 +87,7 @@ class BasePage
       $LOG.info("Error has occurred in : #{__FILE__} @ line #{__LINE__}")
       $LOG.error("Error.message: #{e.message}")
       $LOG.debug("Error.backtrace: #{e.backtrace}")
+      take_screenshot(__FILE__, __LINE__)
       raise
 
     end
@@ -103,6 +106,7 @@ class BasePage
       $LOG.info("Error has occurred in : #{__FILE__} @ line #{__LINE__}")
       $LOG.error("Error.message: #{e.message}")
       $LOG.debug("Error.backtrace: #{e.backtrace}")
+      take_screenshot(__FILE__, __LINE__)
       raise
 
     end

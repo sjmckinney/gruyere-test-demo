@@ -38,6 +38,7 @@ class HomePage < BasePage
       $LOG.info("Error has occurred in : #{__FILE__} @ line #{__LINE__}")
       $LOG.error("Error.message: #{e.message}")
       $LOG.debug("Error.backtrace: #{e.backtrace}")
+      take_screenshot(__FILE__, __LINE__)
       raise
 
     end
@@ -59,6 +60,7 @@ class HomePage < BasePage
       $LOG.info("Error has occurred in : #{__FILE__} @ line #{__LINE__}")
       $LOG.error("Error.message: #{e.message}")
       $LOG.debug("Error.backtrace: #{e.backtrace}")
+      take_screenshot(__FILE__, __LINE__)
       raise
 
     end
