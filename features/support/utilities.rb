@@ -1,5 +1,7 @@
 module Utilities
 
+  attr_accessor :driver
+
   SCREENSHOT_DIR ||= "#{File.absolute_path('../..', File.dirname(__FILE__))}/screenshots"
 
   def self.validate_and_set_log_level()
@@ -52,7 +54,7 @@ module Utilities
 
   end
 
-  def take_screenshot(file_name, line_number)
+  def self.take_screenshot(file_name, line_number)
 
     time_now = Time.now
     timestamp = "#{time_now.strftime('%Y-%m-%d-%H-%M-%S.')}#{'%03d' % (time_now.usec/1000).to_i}"
