@@ -1,5 +1,7 @@
 module Utilities
 
+  SCREENSHOT_DIR ||= "#{File.absolute_path('../..', File.dirname(__FILE__))}/screenshots"
+
   def self.validate_and_set_log_level()
 
     $LOG.info("ENV['log_level'] is #{ENV['log_level']}")
@@ -47,6 +49,20 @@ module Utilities
   def self.random_string(length)
 
     rand(36**length.to_i).to_s(36)
+
+  end
+
+  def take_screenshot(file_name, line_number)
+
+    time_now = Time.now
+    timestamp = "#{time_now.strftime('%Y-%m-%d-%H-%M-%S.')}#{'%03d' % (time_now.usec/1000).to_i}"
+
+    File.absolute_path('../..', File.dirname(file_name))
+
+    screenshot_name = "#{SCREENSHOT_DIR}/#{File.basename(file_name)}-line#{line_number.to_s}-#{timestamp}.png"
+
+    @driver.save_screenshot(screenshot_name)
+    $LOG.error("Screenshot #{screenshot_name} taken")
 
   end
 
