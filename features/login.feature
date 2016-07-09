@@ -1,4 +1,4 @@
-Feature: Access control to Gruyere site with  of user to login into Gruyere site
+Feature: Access control to Gruyere site
 
   @login @valid
   Scenario: Login with valid credentials
