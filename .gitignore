@@ -1,6 +1,7 @@
 .idea/**
 *.log
-/screenshots
+screenshots/*
+!screenshots/.keep
 
 # Used by dotenv library to load environment variables.
 .env
