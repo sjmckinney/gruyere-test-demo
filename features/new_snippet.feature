@@ -1,4 +1,4 @@
-Feature: Ability to create a manage snippets
+Feature: Ability to create and manage snippets
 
   @snippet @create
   Scenario: Create a new snippet

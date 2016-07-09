@@ -39,12 +39,12 @@ After do |scenario|
 
   if(scenario.failed?)
 
-    $LOG.info('SCENARIO FAILED')
+    $LOG.info("FAILED: Scenario '#{scenario.name}'")
     $LOG.info("Reason: #{scenario.exception.message}")
 
   else
 
-    $LOG.info('SCENARIO PASSED')
+    $LOG.info("PASSED: Scenario '#{scenario.name}''")
 
   end
 
@@ -55,6 +55,7 @@ end
 
 After('@snippet','@create') do
 
+  #After create snippet scenario delete snippet created
   @driver.get("#{ENV['url']}/#{ENV['session_id']}/deletesnippet?index=0")
 
 end
