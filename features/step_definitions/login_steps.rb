@@ -21,3 +21,11 @@ Then(/^the message "([^"]*)" should be displayed$/) do |message|
   expect(displayed_error).to eql(message)
 
 end
+
+Given(/^a valid user logs in$/) do
+
+  @home_page = HomePage.new(@driver)
+  @login_page = @home_page.click_sign_in
+  @login_page.login("#{ENV['account_login']}", "#{ENV['account_password']}")
+
+end

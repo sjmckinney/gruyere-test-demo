@@ -1,11 +1,7 @@
 Given(/^a user creates a snippet "([^"]*)"$/) do |snippet_text|
 
   @snippet_text = snippet_text
-
-  home_page = HomePage.new(@driver)
-  login_page = home_page.click_sign_in
-  login_page.login(ENV['account_login'], ENV['account_password'])
-  new_snippet_page = login_page.click_new_snippet_link
+  new_snippet_page = @login_page.click_new_snippet_link
   @snippets_page = new_snippet_page.add_snippet(@snippet_text)
 
 end

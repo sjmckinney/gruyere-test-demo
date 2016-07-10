@@ -98,11 +98,11 @@ class BasePage
 
   end
 
-  def wait_for(seconds = 15)
+  def wait_for(seconds = 15, period = 0.2)
 
     begin
 
-      Selenium::WebDriver::Wait.new(:timeout => seconds).until { yield }
+      Selenium::WebDriver::Wait.new(:timeout => seconds, :interval => period).until { yield }
 
     rescue Exception => e
 
