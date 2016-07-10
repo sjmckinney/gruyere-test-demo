@@ -1,5 +1,8 @@
 Feature: Ability to create and manage snippets
 
+  Background:
+    Given a valid user logs in
+
   @snippet @create
   Scenario: Create a new snippet
     Given a user creates a snippet "My new snippet one"

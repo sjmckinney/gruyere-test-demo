@@ -68,4 +68,11 @@ module Utilities
 
   end
 
+  def self.reverse_file_separators(file_path)
+
+    #forward slash to back slash
+    file_path.gsub!('/', '\\')
+
+  end
+
 end
